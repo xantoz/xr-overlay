@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/WiVRn/WiVRn"
 
 LICENSE="GPL-3 Apache-2.0 MIT"
 SLOT="0"
-IUSE="gui nvenc +pipewire pulseaudio systemd vaapi wireshark-plugins x264"
+IUSE="gui nvenc +pipewire pulseaudio +steamvr systemd vaapi wireshark-plugins x264"
 REQUIRED_USE="|| ( nvenc vaapi x264 )"
 
 if [[ ${PV} == 9999 ]]; then
@@ -78,6 +78,12 @@ BDEPEND="
 	dev-util/vulkan-headers
 "
 
+patch_steamvr_check() {
+	if use steamvr; then
+		eapply "${FILESDIR}/force-enable-steamvr_lh.patch"
+	fi
+}
+
 if [[ ${PV} == 9999 ]]; then
 	src_unpack() {
 		git-r3_src_unpack
@@ -91,9 +97,15 @@ if [[ ${PV} == 9999 ]]; then
 	src_prepare() {
 		default_src_prepare
 		eapply --directory="${WORKDIR}/monado-src" "${WORKDIR}/${P}/patches/monado"/*
+		patch_steamvr_check
 		cmake_src_prepare
 	}
 else
+        src_prepare() {
+		patch_steamvr_check
+		cmake_src_prepare
+        }
+
 	src_unpack() {
 		default_src_unpack
 		cd "${WORKDIR}"
@@ -127,6 +139,7 @@ src_configure() {
 		-DWIVRN_USE_SYSTEMD=$(usex systemd)
 		-DWIVRN_USE_SYSTEM_OPENXR=ON
 		-DWIVRN_USE_SYSTEM_BOOST=ON
+                -DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=$(usex steamvr)
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DFETCHCONTENT_BASE_DIR="${WORKDIR}"
 		-DENABLE_COLOURED_OUTPUT=OFF
