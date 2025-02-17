@@ -79,6 +79,7 @@ BDEPEND="
 "
 
 do_patches() {
+	eapply "${FILESDIR}/0001-Don-t-throw-socket_shutdown-for-0-writes.patch"
 	eapply "${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
 	if use steamvr; then
 		eapply "${FILESDIR}/force-enable-steamvr_lh.patch"

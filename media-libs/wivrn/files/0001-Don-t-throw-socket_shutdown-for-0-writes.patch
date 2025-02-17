@@ -1,0 +1,26 @@
+From e4b703db52db3f1b2ceda17e8d1c35b06ff2c4b3 Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <patricknicolas@laposte.net>
+Date: Sat, 15 Feb 2025 13:55:47 +0100
+Subject: [PATCH] Don't throw socket_shutdown for 0 writes
+
+---
+ common/wivrn_sockets.cpp | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/common/wivrn_sockets.cpp b/common/wivrn_sockets.cpp
+index f5718ae..4eff784 100644
+--- a/common/wivrn_sockets.cpp
++++ b/common/wivrn_sockets.cpp
+@@ -583,9 +583,6 @@ void wivrn::TCP::send_raw(serialization_packet && packet)
+ 	{
+ 		ssize_t sent = ::sendmsg(fd, &hdr, MSG_NOSIGNAL);
+ 
+-		if (sent == 0)
+-			throw socket_shutdown{};
+-
+ 		if (sent < 0)
+ 			throw std::system_error{errno, std::generic_category()};
+ 
+-- 
+2.48.1
+
