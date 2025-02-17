@@ -1,0 +1,28 @@
+From c4cc16cd3f5440dc3bf937637f3be0a364072f4b Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <patricknicolas@laposte.net>
+Date: Mon, 17 Feb 2025 16:15:58 +0100
+Subject: [PATCH] Use width/height multiple of 32 for nvenc probing
+
+---
+ server/encoder/encoder_settings.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/server/encoder/encoder_settings.cpp b/server/encoder/encoder_settings.cpp
+index 2727e80..b9f3faa 100644
+--- a/server/encoder/encoder_settings.cpp
++++ b/server/encoder/encoder_settings.cpp
+@@ -187,9 +187,9 @@ static bool probe_nvenc(wivrn_vk_bundle & bundle)
+ 	encoder_settings s{
+ 	        {
+ 	                .width = 800,
+-	                .height = 600,
++	                .height = 608,
+ 	                .video_width = 800,
+-	                .video_height = 600,
++	                .video_height = 608,
+ 	                .codec = h264,
+ 	        },
+ 	        encoder_nvenc,
+-- 
+2.48.1
+

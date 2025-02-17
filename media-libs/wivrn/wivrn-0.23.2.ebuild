@@ -78,7 +78,8 @@ BDEPEND="
 	dev-util/vulkan-headers
 "
 
-patch_steamvr_check() {
+do_patches() {
+	eapply "${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
 	if use steamvr; then
 		eapply "${FILESDIR}/force-enable-steamvr_lh.patch"
 	fi
@@ -97,12 +98,12 @@ if [[ ${PV} == 9999 ]]; then
 	src_prepare() {
 		default_src_prepare
 		eapply --directory="${WORKDIR}/monado-src" "${WORKDIR}/${P}/patches/monado"/*
-		patch_steamvr_check
+		do_patches
 		cmake_src_prepare
 	}
 else
         src_prepare() {
-		patch_steamvr_check
+		do_patches
 		cmake_src_prepare
         }
 
