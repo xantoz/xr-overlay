@@ -41,7 +41,7 @@ DEPEND="
 	)
 	opengl? ( virtual/opengl )
 	opencv? ( media-libs/opencv:= )
-	gles? ( media-libs/mesa )
+	gles? ( media-libs/libglvnd )
 	dbus? ( sys-apps/dbus )
 	systemd? ( sys-apps/systemd:= )
 	uvc? ( media-libs/libuvc )
