@@ -78,13 +78,11 @@ BDEPEND="
 	dev-util/vulkan-headers
 "
 
-do_patches() {
-	eapply "${FILESDIR}/0001-Don-t-throw-socket_shutdown-for-0-writes.patch"
-	eapply "${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
-	if use steamvr; then
-		eapply "${FILESDIR}/force-enable-steamvr_lh.patch"
-	fi
-}
+PATCHES=(
+	"${FILESDIR}/0001-Don-t-throw-socket_shutdown-for-0-writes.patch"
+	"${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
+	"${FILESDIR}/force-enable-steamvr_lh.patch"
+)
 
 if [[ ${PV} == 9999 ]]; then
 	src_unpack() {
@@ -103,11 +101,6 @@ if [[ ${PV} == 9999 ]]; then
 		cmake_src_prepare
 	}
 else
-	src_prepare() {
-		do_patches
-		cmake_src_prepare
-	}
-
 	src_unpack() {
 		default_src_unpack
 		cd "${WORKDIR}"
