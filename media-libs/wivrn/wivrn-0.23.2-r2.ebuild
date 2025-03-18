@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/WiVRn/WiVRn"
 
 LICENSE="GPL-3 Apache-2.0 MIT"
 SLOT="0"
-IUSE="debug gui nvenc +pipewire pulseaudio +steamvr systemd vaapi wireshark-plugins x264"
+IUSE="debug gui nvenc +pipewire pulseaudio +steamvr systemd vaapi wireshark-plugins x264 +colored-output"
 REQUIRED_USE="|| ( nvenc vaapi x264 )"
 
 if [[ ${PV} == 9999 ]]; then
@@ -53,7 +53,7 @@ RDEPEND="
 		sys-apps/systemd
 	)
 	vaapi? (
-		media-video/ffmpeg[libdrm,vaapi]
+		media-video/ffmpeg[drm,vaapi]
 	)
 	wireshark-plugins? (
 		net-analyzer/wireshark
@@ -79,7 +79,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/0001-Don-t-throw-socket_shutdown-for-0-writes.patch"
 	"${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
 	"${FILESDIR}/force-enable-steamvr_lh.patch"
 )
@@ -138,7 +137,7 @@ src_configure() {
 		-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=$(usex steamvr)
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DFETCHCONTENT_BASE_DIR="${WORKDIR}"
-		-DENABLE_COLOURED_OUTPUT=ON
+		-DENABLE_COLOURED_OUTPUT=$(usex colored-output)
 	)
 
 	cmake_src_configure
