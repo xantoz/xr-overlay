@@ -1,4 +1,4 @@
-# Copyright 2020-2021 Gentoo Authors
+# Copyright 2020-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,6 @@ DEPEND="
 	virtual/libudev
 	media-libs/libv4l
 	dev-libs/libbsd
-	dev-libs/cJSON
 	wayland? (
 		dev-libs/wayland
 		dev-libs/wayland-protocols
@@ -74,7 +73,7 @@ src_configure() {
 		-DXRT_HAVE_LIBUVC=$(usex uvc)
 		-DXRT_HAVE_FFMPEG=$(usex ffmpeg)
 		-DXRT_HAVE_SDL2=$(usex sdl)
-		-DXRT_HAVE_SYSTEM_CJSON=ON
+		-DXRT_HAVE_SYSTEM_CJSON=OFF
 		-DXRT_HAVE_GST=$(usex gstreamer)
 		-DXRT_HAVE_PERCETTO=OFF
 
