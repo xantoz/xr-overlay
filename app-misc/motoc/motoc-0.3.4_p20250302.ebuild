@@ -134,6 +134,12 @@ SRC_URI="
 "
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}/"
 
+DEPENDS="
+	media-libs/openxr-loader
+	dev-libs/jsoncpp
+"
+RDEPENDS="${DEPENDS}"
+
 LICENSE=""
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 BSD ISC MIT MPL-2.0 Unicode-DFS-2016"
