@@ -30,6 +30,7 @@ LICENSE+="
 SLOT="0"
 IUSE="+openvr +openxr +wayland +X +pipewire +osc +wayvr"
 DEPEND="
+
 	media-libs/alsa-lib
 	media-libs/shaderc
 	media-libs/fontconfig
@@ -67,9 +68,9 @@ BDEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-x11-pipewire.patch"
-)
+# PATCHES=(
+# 	"${FILESDIR}/${P}-x11-pipewire.patch"
+# )
 
 pkg_setup() {
 	export PKG_CONFIG_ALLOW_CROSS=1
@@ -79,7 +80,7 @@ pkg_setup() {
 
 src_unpack() {
 	git-r3_src_unpack
-	eapply "${FILESDIR}/${P}-devendor-openvr.patch"
+	# eapply "${FILESDIR}/${P}-devendor-openvr.patch"
 	cargo_live_src_unpack
 }
 
