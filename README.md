@@ -19,6 +19,7 @@ Packages that already exists over in guru but that have various fixes included b
    one can use lighthouse tracked devices together with e.g. a Meta
    Quest (calibration of the two playspaces requires motoc)
  * media-libs/opencomposite ebuild that is pinned to a specific git commit
+ * media-libs/wlx-overlay-s-9999 ebuild that actually builds (ATM I just removed the patches from the one I found in guru-overlay)
 
 I might try to push some of these fixes to guru-overlay if I ever get
 off of my lazy butt. Feel free to just add them there yourself too, if
@@ -34,6 +35,7 @@ Probably some upstreamability
 ## TODO
 
 * TODO: Make an ebuild that is pinned to a specific for media-libs/monado
+* TODO: Make an ebuild for wlx-overlay-s that isn't a -9999 (v25.3 seems good)
 * TODO: make an ebuild for xrizer
 * TODO: make an ebuild for watchman-pairing-agent (also needs an ebuild for its dependency customtkinter)
 * TODO: make an ebuild for wayvr-dashboard (might be hard, doesn't seem like there's any upstream ebuilds for tauri...)
