@@ -68,10 +68,6 @@ BDEPEND="
 "
 RDEPEND="${DEPEND}"
 
-# PATCHES=(
-# 	"${FILESDIR}/${P}-x11-pipewire.patch"
-# )
-
 pkg_setup() {
 	export PKG_CONFIG_ALLOW_CROSS=1
 	export OPENVR_NO_VENDOR=1
@@ -80,7 +76,6 @@ pkg_setup() {
 
 src_unpack() {
 	git-r3_src_unpack
-	# eapply "${FILESDIR}/${P}-devendor-openvr.patch"
 	cargo_live_src_unpack
 }
 
