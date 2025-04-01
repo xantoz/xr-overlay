@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>sam@binarycake.ca</email>
-    <name>Sam Wilson</name>
+    <email>xantoz@nowhere.com</email>
+    <name>xantoz</name>
   </maintainer>
   <use>
     <flag name="openvr">Support Valve's SteamVR SDK.</flag>
