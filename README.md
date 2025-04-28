@@ -34,8 +34,16 @@ Probably some upstreamability
 
 ## TODO
 
-* TODO: Make an ebuild that is pinned to a specific for media-libs/monado
+* TODO: Make an ebuild that is pinned to a specific version for media-libs/monado
 * TODO: make an ebuild for xrizer
 * TODO: make an ebuild for watchman-pairing-agent (also needs an ebuild for its dependency customtkinter)
 * TODO: make an ebuild for wayvr-dashboard (TODO: Figure out how to build tauri thingies)
 * TODO: make an ebuild for ALCOM (also make one for the CLI vrc-get)
+* TODO: make an ebuild for VRCX (dotnet...)
+* TODO: make an ebuild for ReVision (dotnet..)
+* TODO: make an ebuild for EyeTrackVR (python, need to add license) (might need ebuild for PySimpleGui-4-foss)
+* TODO: make an ebuild for project babble (python, need to add license)
+* TODO: make an ebuild for VRCFT.Avalonia (dotnet...)
+* TODO: make an ebuild for openvr-space-calibrator
+* TODO: make an ebuild for overte
+
