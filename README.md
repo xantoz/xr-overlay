@@ -46,4 +46,4 @@ Probably some upstreamability
 * TODO: make an ebuild for VRCFT.Avalonia (dotnet...)
 * TODO: make an ebuild for openvr-space-calibrator
 * TODO: make an ebuild for overte
-
+* TODO: make an ebuild for eepyxr (make an ebuild for the SDL3XR forked SDL and put it under a special prefix)
