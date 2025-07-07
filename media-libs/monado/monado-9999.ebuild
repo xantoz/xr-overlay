@@ -4,7 +4,7 @@
 EAPI=7
 
 # CMake picked to avoid automagic dependencies in meson.build
-inherit cmake git-r3
+inherit cmake git-r3 fcaps
 
 DESCRIPTION="The open source OpenXR runtime."
 HOMEPAGE="https://monado.dev"
@@ -51,6 +51,11 @@ DEPEND="
 	vive? ( sys-libs/zlib:= )
 "
 RDEPEND="${DEPEND}"
+
+# Make it possible for monado to use a realtime priority vulkan queue
+FILECAPS=(
+	cap_sys_nice+ep usr/bin/monado-service
+)
 
 src_configure() {
 	local mycmakeargs=(

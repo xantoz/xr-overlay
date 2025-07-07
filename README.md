@@ -15,6 +15,7 @@ Packages that already exists over in guru but that have various fixes included b
  * media-libs/monado being built against the system cjson causes issues
    running steam games (libcjson is not available inside the steam linux
    runtime), so we build it with the bundled cjson here.
+ * media-libs/monado ebuild sets cap_sys_nice on /usr/bin/monado-service, so you don't have to remember to do it yourself
  * media-libs/opencomposite ebuild that is pinned to a specific git commit
  * adding a media-libs/wlx-overlay-25.3 ebuild & fixing the media-libs/wlx-overlay-s-9999 ebuild so that it actually builds
 
